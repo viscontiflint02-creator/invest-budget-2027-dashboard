@@ -145,7 +145,7 @@ function renderBudget(){
   const highlight=b.highlight,otherFact=hasFact?round(actual-(highlight?.amount||0)):0;
   if(hasFact)svg+=bar(fx,otherFact,0,'#10b8d6','Факт');
   if(hasFact&&highlight)svg+=bar(fx,highlight.amount,otherFact,'#de753b',highlight.name);
-  svg+=`<text class="value" x="${px+bw/2}" y="${bottom-b.limit/1e6*scale-10}" text-anchor="middle">${mln(b.limit,1)}</text><text class="year" x="${cx}" y="244" text-anchor="middle">${b.year}</text>`;
+  svg+=`<text class="value" x="${px+bw/2}" y="${bottom-b.limit/1e6*scale-10}" text-anchor="middle">${mln(b.limit)}</text><text class="year" x="${cx}" y="244" text-anchor="middle">${b.year}</text>`;
   if(hasFact)svg+=`<text class="value ${is26?'over-text':''}" x="${fx+bw/2}" y="${bottom-actual/1e6*scale-10}" text-anchor="middle">${mln(actual)}</text><text class="use ${actual>b.limit?'over-text':''}" x="${cx}" y="265" text-anchor="middle">${pct(actual/b.limit)}</text>`;
  });
  $('budget-chart').innerHTML=svg+'</svg>';
